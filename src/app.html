@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="styla.css">
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    </head>      
+
+    <body style="margin: 0px;padding: 0px;">
+        <script>
+            function modal1() {
+                return {
+                    showModal: true
+                }
+            }
+        </script>
+        <div x-data="{ showModal: true }" id="banner" style="border: 1px solid black;background-color: aqua;display: flex;">
+                <h1 id="logo" alt="logo" style="size: 2rem;text-align:left;margin-top:0px;float:left;margin:0px;line-height:50px;padding-left:9px;">Name</h1>
+                <button onclick="modal2()" style="flex:1;border:0px;background-color:blueviolet;">Modal 2</button>
+        </div>
+        <div x-data="modal1()">
+            <script>
+                function divtest() {
+                    return {
+                        showModal: true
+                    }
+                }
+            </script>
+            <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
+
+            <div x-data="divtest()">
+                <h1>Text</h1>
+                <div style="border: 1px solid black;" x-show="showModal">
+                    <p style="color: red;">Test</p>
+                    <button x-on:click="showModal = false">Burrrr</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
