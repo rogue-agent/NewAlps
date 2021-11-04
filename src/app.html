@@ -20,17 +20,18 @@
             }
             function hid() {
                 return{
-                    modal1() {return{showModal: false}}
+                    modal1() {return{showModal: false}},
+                    modal2() {return{showModal: false}}
                 }
             }
         </script>
         <navbar>
             <ul class="nav-list">
                 <li class="nav-item">
-                    <h1 style="padding: 0px;margin: 0px;">Name</h2>
+                    <h1 style="padding: 0px;margin: 0px;">NewAlps</h2>
                 </li>
                 <li class="nav-item">
-                    <button x-on:click="hid(),modal1()">Modal 1</button>
+                    <button onclick="hid(),modal1()" x-on:click="hid(),modal1()">Modal 1</button>
                 </li>
                 <li class="nav-item">
                     <button x-on:click="hid(),modal2()">Modal 2</button>

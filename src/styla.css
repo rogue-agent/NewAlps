@@ -13,11 +13,20 @@
     list-style: none;
     margin-left: 2rem;
 }
-.nav-item button {
+button {
     size: 2rem;
-    border: 0px;
+    border: none;
+    outline: none;
     text-decoration: none;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 5px;
     color:black;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 100ms ease-in;
+}
+
+button:hover {
+    background-color:black;
+    color:aliceblue;
 }
