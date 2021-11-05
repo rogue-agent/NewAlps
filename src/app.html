@@ -6,13 +6,19 @@
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     </head>      
 
-    <body style="margin: 0px;padding: 0px;">
+    <body style="margin: 0px;padding: 0px;" 
+        x-data="{
+            search: '',
+            items: ['Veneering', 'Craftsmanship', 'Programming','Faceting','Leadership'],
+            get filteredItems() {
+                return this.items.filter(
+                    i => i.localeCompare(this.search, { sensitivity: 'accent' }) === 0
+    )}}">
         <script>
             function modal2() {
                 return {
                     showModal: true
-                }
-            }
+                }}
             function modal1() {
                 return {
                     showModal: true
@@ -22,8 +28,7 @@
                 return{
                     modal1() {return{showModal: false}},
                     modal2() {return{showModal: false}}
-                }
-            }
+                }}
         </script>
         <navbar x-data="">
             <ul class="nav-list">
@@ -31,17 +36,20 @@
                     <h1 style="padding: 0px;margin: 0px;">NewAlps</h2>
                 </li>
                 <li class="nav-item">
-                    <button onclick="hid(),modal1()" x-on:click="hid(),modal1()">Modal 1</button>
+                    <button x-on:click="hid();modal1();">Modal 1</button>
                 </li>
                 <li class="nav-item">
-                    <button x-on:click="hid(),modal2()">Modal 2</button>
+                    <button x-on:click="hid();modal2();">Modal 2</button>
                 </li>
                 <li class="nav-item">
                     <button x-on:click="">Donate</button>
                 </li>
+                <li class="nav-item">
+                        <input x-model="search" placeholder="Search..." @keyup.enter="">
+                </li>
             </ul>
         </navbar>
-        <div x-data="modal1()">
+        <div x-data="modal1()" x-show="showModal">
             <script>
                 function divtest() {
                     return {
@@ -49,6 +57,13 @@
                     }
                 }
             </script>
+            <div>
+                <ul>
+                    <template x-for="item in filteredItems" :key="item">
+                        <li x-text="item"></li>
+                    </template>
+                </ul>
+            </div>
             <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
 
             <div x-data="divtest()">
@@ -60,7 +75,7 @@
             </div>
         </div>
 
-        <div x-data="modal2()">
+        <div x-data="modal2()" x-show="showModal">
             <p>burrrrrr</p>
         </div>
 
